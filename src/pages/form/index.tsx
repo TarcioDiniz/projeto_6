@@ -46,13 +46,15 @@ const FormPage = () => {
 
   return (
     <Paper className={styles.container} elevation={0}>
-      <h1 id="title">Formulário de pesquisa</h1>
-      <p id="description">Por favor, preencha a pesquisa abaixo:</p>
+      <div className={styles.titles}>
+        <h1 id="title">Formulário de pesquisa</h1>
+        <p id="description">Por favor, preencha a pesquisa abaixo:</p>
+      </div>
       <Formik<FormValues>
         initialValues={initialValues}
         onSubmit={handleSubmit}
       >
-        {(props: FormikProps<FormValues>) => (
+      {(props: FormikProps<FormValues>) => (
           <Form className={styles.form_container}>
             <Field
               as={TextField}
