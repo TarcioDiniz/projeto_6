@@ -10,7 +10,8 @@ import {
   TextField
 } from "@mui/material";
 import styles from "./form.module.scss";
-import {Field, Form, Formik, FormikProps} from "formik";
+import {Field, Form, Formik, FormikHelpers, FormikProps} from "formik";
+import {toast} from "react-toastify";
 
 const initialValues = {
   name: "",
@@ -33,8 +34,14 @@ interface FormValues {
 }
 
 const FormPage = () => {
-  const handleSubmit = (values: FormValues) => {
+
+  const handleSubmit = (values: FormValues, { setSubmitting }: FormikHelpers<FormValues>) => {
     console.log(values);
+    toast.success("Enviado com Sucesso.");
+    setSubmitting(true);
+    setTimeout(() => {
+      setSubmitting(false);
+    }, 5000);
   };
 
   return (
