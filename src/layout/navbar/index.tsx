@@ -1,5 +1,5 @@
-import { useNavigate } from 'react-router-dom';
-import { useState } from 'react';
+import {useLocation, useNavigate} from 'react-router-dom';
+import {useEffect, useState} from 'react';
 import { MagicTabSelect } from "react-magic-motion";
 import styles from "./navbar.module.scss"
 
@@ -12,6 +12,15 @@ const tabData = [
 const Navbar = () => {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const navigate = useNavigate();
+  const location = useLocation();
+
+  useEffect(() => {
+    const currentRoute = location.pathname;
+    const foundIndex = tabData.findIndex(tab => tab.route === currentRoute);
+    if (foundIndex !== -1) {
+      setSelectedIndex(foundIndex);
+    }
+  }, [location]);
 
   const handleTabClick = (index: number, route: string) => {
     setSelectedIndex(index);

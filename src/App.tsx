@@ -1,18 +1,13 @@
 import React from 'react';
 import Router from "./routes";
 import Navbar from "./layout/navbar";
+import styles from "./App.module.scss"
 
 function App() {
   return (
-    <div className="App">
+    <div className={styles.App}>
       <Navbar/>
-      <div style={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        width: "100%",
-        height: "100%",
-      }}>
+      <div className={styles.content}>
         <Router/>
       </div>
     </div>
