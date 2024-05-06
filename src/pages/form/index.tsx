@@ -46,112 +46,114 @@ const FormPage = () => {
 
   return (
     <div className={styles.container}>
-      <Formik<FormValues>
-        initialValues={initialValues}
-        onSubmit={handleSubmit}
-      >
-        {(props: FormikProps<FormValues>) => (
-          <Form className={styles.form_container}>
-            <div className={styles.titles}>
-              <h1 id="title">Formulário de pesquisa</h1>
-              <p id="description">Por favor, preencha a pesquisa abaixo:</p>
-            </div>
-            <Field
-              as={TextField}
-              id="name"
-              name="name"
-              label="Nome"
-              variant="outlined"
-              fullWidth
-              required
-              className={styles.formField}
-            />
-            <Field
-              as={TextField}
-              id="email"
-              name="email"
-              label="E-mail"
-              type="email"
-              variant="outlined"
-              fullWidth
-              required
-              className={styles.formField}
-            />
-            <Field
-              as={TextField}
-              id="number"
-              name="number"
-              label="Número"
-              type="number"
-              variant="outlined"
-              fullWidth
-              required
-              inputProps={{min: 1, max: 100}}
-              className={styles.formField}
-            />
-            <FormControl component="fieldset" className={styles.formField}>
-              <FormLabel component="legend">Escolha uma opção:</FormLabel>
-              <RadioGroup
-                aria-label="option"
-                name="option"
-                value={props.values.option}
-                onChange={props.handleChange}
-              >
-                <FormControlLabel value="Opção 1" control={<Radio/>} label="Opção 1"/>
-                <FormControlLabel value="Opção 2" control={<Radio/>} label="Opção 2"/>
-              </RadioGroup>
-            </FormControl>
-            <FormControl component="fieldset" className={styles.formField}>
-              <FormLabel component="legend">Escolha entre as caixas de seleção:</FormLabel>
-              <FormControlLabel
-                control={
-                  <Checkbox
-                    checked={props.values.agreement1}
-                    onChange={props.handleChange}
-                    name="agreement1"
-                    color="primary"
-                  />
-                }
-                label="Checkbox 1"
-              />
-              <FormControlLabel
-                control={
-                  <Checkbox
-                    checked={props.values.agreement2}
-                    onChange={props.handleChange}
-                    name="agreement2"
-                    color="primary"
-                  />
-                }
-                label="Checkbox 2"
-              />
-            </FormControl>
-            <FormControl component={"fieldset"} className={styles.formField}>
+      <div style={{padding: '1rem'}}>
+        <Formik<FormValues>
+          initialValues={initialValues}
+          onSubmit={handleSubmit}
+        >
+          {(props: FormikProps<FormValues>) => (
+            <Form className={styles.form_container}>
+              <div className={styles.titles}>
+                <h1 id="title">Formulário de pesquisa</h1>
+                <p id="description">Por favor, preencha a pesquisa abaixo:</p>
+              </div>
               <Field
                 as={TextField}
-                id="comments"
-                name="comments"
-                label="Comentários adicionais"
-                multiline
-                rows={4}
+                id="name"
+                name="name"
+                label="Nome"
                 variant="outlined"
+                fullWidth
+                required
                 className={styles.formField}
               />
-            </FormControl>
-            <FormControl component={"fieldset"} className={styles.formField}>
-              <Button
-                type="submit"
-                variant="contained"
-                color="primary"
-                disabled={props.isSubmitting}
-                className={styles.submitButton}
-              >
-                Enviar
-              </Button>
-            </FormControl>
-          </Form>
-        )}
-      </Formik>
+              <Field
+                as={TextField}
+                id="email"
+                name="email"
+                label="E-mail"
+                type="email"
+                variant="outlined"
+                fullWidth
+                required
+                className={styles.formField}
+              />
+              <Field
+                as={TextField}
+                id="number"
+                name="number"
+                label="Número"
+                type="number"
+                variant="outlined"
+                fullWidth
+                required
+                inputProps={{min: 1, max: 100}}
+                className={styles.formField}
+              />
+              <FormControl component="fieldset" className={styles.formField}>
+                <FormLabel component="legend">Escolha uma opção:</FormLabel>
+                <RadioGroup
+                  aria-label="option"
+                  name="option"
+                  value={props.values.option}
+                  onChange={props.handleChange}
+                >
+                  <FormControlLabel value="Opção 1" control={<Radio/>} label="Opção 1"/>
+                  <FormControlLabel value="Opção 2" control={<Radio/>} label="Opção 2"/>
+                </RadioGroup>
+              </FormControl>
+              <FormControl component="fieldset" className={styles.formField}>
+                <FormLabel component="legend">Escolha entre as caixas de seleção:</FormLabel>
+                <FormControlLabel
+                  control={
+                    <Checkbox
+                      checked={props.values.agreement1}
+                      onChange={props.handleChange}
+                      name="agreement1"
+                      color="primary"
+                    />
+                  }
+                  label="Checkbox 1"
+                />
+                <FormControlLabel
+                  control={
+                    <Checkbox
+                      checked={props.values.agreement2}
+                      onChange={props.handleChange}
+                      name="agreement2"
+                      color="primary"
+                    />
+                  }
+                  label="Checkbox 2"
+                />
+              </FormControl>
+              <FormControl component={"fieldset"} className={styles.formField}>
+                <Field
+                  as={TextField}
+                  id="comments"
+                  name="comments"
+                  label="Comentários adicionais"
+                  multiline
+                  rows={4}
+                  variant="outlined"
+                  className={styles.formField}
+                />
+              </FormControl>
+              <FormControl component={"fieldset"} className={styles.formField}>
+                <Button
+                  type="submit"
+                  variant="contained"
+                  color="primary"
+                  disabled={props.isSubmitting}
+                  className={styles.submitButton}
+                >
+                  Enviar
+                </Button>
+              </FormControl>
+            </Form>
+          )}
+        </Formik>
+      </div>
     </div>
   );
 };
