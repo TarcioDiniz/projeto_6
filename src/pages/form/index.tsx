@@ -45,17 +45,17 @@ const FormPage = () => {
   };
 
   return (
-    <Paper className={styles.container} elevation={0}>
-      <div className={styles.titles}>
-        <h1 id="title">Formulário de pesquisa</h1>
-        <p id="description">Por favor, preencha a pesquisa abaixo:</p>
-      </div>
+    <div className={styles.container}>
       <Formik<FormValues>
         initialValues={initialValues}
         onSubmit={handleSubmit}
       >
-      {(props: FormikProps<FormValues>) => (
+        {(props: FormikProps<FormValues>) => (
           <Form className={styles.form_container}>
+            <div className={styles.titles}>
+              <h1 id="title">Formulário de pesquisa</h1>
+              <p id="description">Por favor, preencha a pesquisa abaixo:</p>
+            </div>
             <Field
               as={TextField}
               id="name"
@@ -86,7 +86,7 @@ const FormPage = () => {
               variant="outlined"
               fullWidth
               required
-              inputProps={{ min: 1, max: 100 }}
+              inputProps={{min: 1, max: 100}}
               className={styles.formField}
             />
             <FormControl component="fieldset" className={styles.formField}>
@@ -126,29 +126,33 @@ const FormPage = () => {
                 label="Checkbox 2"
               />
             </FormControl>
-            <Field
-              as={TextField}
-              id="comments"
-              name="comments"
-              label="Comentários adicionais"
-              multiline
-              rows={4}
-              variant="outlined"
-              className={styles.formField}
-            />
-            <Button
-              type="submit"
-              variant="contained"
-              color="primary"
-              disabled={props.isSubmitting}
-              className={styles.submitButton}
-            >
-              Enviar
-            </Button>
+            <FormControl component={"fieldset"} className={styles.formField}>
+              <Field
+                as={TextField}
+                id="comments"
+                name="comments"
+                label="Comentários adicionais"
+                multiline
+                rows={4}
+                variant="outlined"
+                className={styles.formField}
+              />
+            </FormControl>
+            <FormControl component={"fieldset"} className={styles.formField}>
+              <Button
+                type="submit"
+                variant="contained"
+                color="primary"
+                disabled={props.isSubmitting}
+                className={styles.submitButton}
+              >
+                Enviar
+              </Button>
+            </FormControl>
           </Form>
         )}
       </Formik>
-    </Paper>
+    </div>
   );
 };
 

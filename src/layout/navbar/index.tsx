@@ -6,7 +6,7 @@ import styles from "./navbar.module.scss"
 const tabData = [
   { title: 'INICIO', route: '/' },
   { title: 'FORMULÁRIO', route: '/form' },
-  { title: 'DUVIDAS', route: '/faq' }
+  { title: 'DUVIDAS', route: '/helpers' }
 ];
 
 const Navbar = () => {
